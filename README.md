@@ -43,7 +43,13 @@ sudo install -m 644 plymouth/in-marvin-we-trust/* /usr/share/plymouth/themes/in-
 sudo plymouth-set-default-theme in-marvin-we-trust --rebuild-initrd
 ```
 
-Riavvia per vedere il risultato. Se Plymouth non compare durante l'avvio, verifica che la distribuzione lo abbia abilitato nell'initramfs e nella configurazione del bootloader. La schermata per la password del disco cifrato mostra la scritta pixelata «Encryption is not a crime».
+Riavvia per vedere il risultato. Il tema mostra **AVVIO DEL SISTEMA** all'avvio, **SPEGNIMENTO DEL SISTEMA** allo spegnimento e **RIAVVIO DEL SISTEMA** al riavvio. Se Plymouth non compare durante l'avvio, verifica che la distribuzione lo abbia abilitato nell'initramfs e nella configurazione del bootloader.
+
+### Passphrase del disco e logo del produttore
+
+La schermata di sblocco con la scritta «Encryption is not a crime» appare soltanto se la passphrase viene richiesta **dopo** l'avvio del kernel, tramite Plymouth. Se anche `/boot` è nel volume cifrato e GRUB usa `GRUB_ENABLE_CRYPTODISK=y`, la prima richiesta della passphrase è invece di **GRUB**: avviene prima che Plymouth possa partire. In questa configurazione è normale vedere ancora il logo Lenovo durante la richiesta; selezionare o reinstallare il tema Plymouth non la modifica.
+
+Per mostrare il tema Plymouth già alla richiesta della passphrase occorre modificare la struttura di avvio, ad esempio spostando kernel e initramfs su una partizione `/boot` non cifrata e lasciando a `sd-encrypt` lo sblocco del volume di sistema. È un intervento distinto che richiede una migrazione delle partizioni e la reinstallazione del bootloader. Per personalizzare invece la richiesta iniziale di GRUB serve una configurazione grafica incorporata nella sua immagine EFI, accessibile prima dello sblocco; il normale `GRUB_THEME` conservato dentro `/boot` cifrato viene caricato troppo tardi.
 
 Per verificare la selezione:
 
