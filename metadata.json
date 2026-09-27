@@ -1,0 +1,11 @@
+{
+  "KPackageStructure": "Plasma/LookAndFeel",
+  "KPlugin": {
+    "Id": "org.inmarvinwetrust.splash",
+    "Name": "In Marvin We Trust",
+    "Description": "Black and red animated splash screen for KDE Plasma 6",
+    "Authors": [{ "Name": "Marvin Pascale" }],
+    "Website": "https://github.com/marvinpascale/InMarvinWeTrust-kde-splash-screen"
+  },
+  "X-Plasma-APIVersion": "2"
+}

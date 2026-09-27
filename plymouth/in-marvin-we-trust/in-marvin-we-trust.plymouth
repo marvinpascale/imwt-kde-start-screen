@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=In Marvin We Trust
+Description=Black and red boot splash with Marvin and a segmented progress bar
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/in-marvin-we-trust
+ScriptFile=/usr/share/plymouth/themes/in-marvin-we-trust/in-marvin-we-trust.script
